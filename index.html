@@ -58,7 +58,7 @@
 
 		<div data-map-layer="background" data-visible="true"
 			data-tiles-url="http://d.tile.stamen.com/toner/{z}/{x}/{y}.png"
-			data-force-reload="true">
+			data-force-reload="false">
 			<div class="attribution">
 				Données &#150; &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>
 				| Map style design &#150; &copy; <a href="http://stamen.com">Stamen</a>
@@ -94,7 +94,8 @@
                     },
                     popupOptions : {
                         minWidth : 50,
-                        maxWidth : 350
+                        maxWidth : 350,
+                        offset : [ 0, -10 ]
                     },
                     renderDescription : function(elm) {
                         this._renderDescription(elm, 100);
@@ -125,8 +126,9 @@
 		<div data-resource-type="Default" data-view="ListItemView"
 			data-extends="#ParentTemplate">
 			<div class="panel" data-action-click="activateResource">
-				<div class="panel-heading">
+				<div class="panel-heading" data-action-mouseover="focusResource">
 					<span data-render="renderLabel"></span>
+					<button data-render="renderDeleteButton">Del</button>
 				</div>
 				<div class="panel-body" data-render="hideBody">
 					<div class="row">
@@ -138,6 +140,17 @@
 			</div>
 			<script type="text/javascript">
                 ({
+                    renderDeleteButton : function(elm) {
+                        var dataSet = this.getDataSet();
+                        var resource = this.getResource();
+                        elm.on('click', function(e) {
+                            console.log('DELETE!!', resource);
+                            dataSet.deleteResource(resource).then(function(){
+                                console.log('I AM HERE!')
+                            })
+                            e.stopPropagation();
+                        })
+                    },
                     hideBody : function(elm) {
                         this.$body = elm;
                         this.$body.hide();
@@ -151,13 +164,7 @@
                         this.$body.hide();
                         var panel = this.$el.find('.panel');
                         panel.removeClass('panel-primary');
-                    },
-                    onFocusResource : function(e) {
-                        console.log('!!!FOCUSING!!!')
-                    },
-                    onBlurResource : function(e) {
-                        console.log('!!!BLURRING!!!')
-                    },
+                    }
                 })
             </script>
 		</div>
@@ -178,8 +185,8 @@
 		<div data-resource-type="Default" data-view="MapActivePopupView"
 			data-extends="[data-resource-type='Default'][data-view='MapFocusedPopupView']">
 			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<i class=""></i> <span data-render="renderLabel">1</span>
+				<div class="panel-heading" data-action-mouseover="helloResource">
+					<i class=""></i> <span data-render="renderLabel"></span>
 				</div>
 				<div class="panel-body">
 					<div class="row">
@@ -190,6 +197,25 @@
 					</div>
 				</div>
 			</div>
+			<script type="text/javascript">
+                ({
+                    saySomething : function() {
+                        console.log('something')
+                    },
+                    onHelloResource : function() {
+                        console.log('!!!HELLO!!!')
+                    },
+                    onByeResource : function() {
+                        console.log('!!!BYE!!!')
+                    },
+                    onFocusResource : function(e) {
+                        console.log('!!!FOCUSING!!!')
+                    },
+                    onBlurResource : function(e) {
+                        console.log('!!!BLURRING!!!')
+                    }
+                })
+            </script>
 		</div>
 
 	</div>
