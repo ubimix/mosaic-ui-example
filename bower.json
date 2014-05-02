@@ -1,0 +1,11 @@
+{
+    "name" : "mosaic-ui-example",
+    "version" : "0.2.0",
+    "dependencies" : {
+        "bootstrap" : "*",
+        "font-awesome" : "*",
+        "jquery" : "*",
+        "underscore" : "*",
+        "mosaic-ui" : "git://github.com/ubimix/mosaic-ui.git"
+    }
+}

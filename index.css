@@ -1,0 +1,82 @@
+html,body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: 'Lato', Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#list {
+	background-color: white;
+	position: absolute;
+	width: 25%;
+	top: 50px;
+	right: 0px;
+	bottom: 0px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#map {
+	background-color: white;
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	bottom: 0px;
+	right: 25%;
+	background-color: #eee;
+}
+
+.panel {
+	margin-bottom: 0;
+}
+
+.panel .panel-body h4 {
+	font-size: 1.3em;
+	margin: 0 0 0.5em 0;
+	color: gray;
+}
+
+address {
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.photo-wrapper img {
+	max-height: 200px;
+	border: 1px solid silver;
+	-webkit-box-shadow: 2px 2px 11px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow: 2px 2px 11px 0px rgba(50, 50, 50, 0.75);
+	box-shadow: 2px 2px 11px 0px rgba(50, 50, 50, 0.75);
+}
+
+.leaflet-popup-content-wrapper {
+	padding: 0px;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+	margin: 0;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content .panel {
+	margin-bottom: 0;
+	border: none;
+}
+
+.leftbox {
+	position: absolute;
+	left: 0px;
+	top: 55px;
+}
+
+.category-icon {
+	width: 1.5em;
+}
+
+.field-label {
+	color: gray;
+}
+
+p,h3 {
+	margin: 0.5em 0;
+}
